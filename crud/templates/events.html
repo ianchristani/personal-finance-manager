@@ -1,0 +1,28 @@
+{% extends "general_users_template.html" %}
+
+{% block eventList %}
+    <div class="container m-4">
+        <h1>Financial Events</h1>
+        <p>Click on the event to edit or see more details.</p>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Event</th>
+                <th scope="col">Total - $</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in allEvents %}  
+                    <tr>
+                        <th scope="row"><a href="{% url 'crud:updateEvent' event.id %}">{{ event.event }}</a></th>
+                        <td>{{ event.total }}</td>
+                        <td>{{ event.description }}</td>
+                        <td>{{ event.date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock%}

@@ -1,0 +1,30 @@
+{% extends "general_users_template.html" %}
+
+{% block eventForm %}
+    <div class="container m-4">
+        {% if id %}
+            <h1>The event's details:</h1>
+        {% else %}
+            <h1>Fill with the event details:</h1>
+        {% endif%}
+    </div>
+    <div class="container m-4">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ eventform.as_p }}
+                <span>
+                    {% if id and id.pic.url != None %}
+                        The current image: <span><img class="event_detail_pic" src="{{ id.pic.url }}"></span>                    
+                    {% endif%}
+                </span>
+            </p>
+            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+        </form>
+    </div>
+    <div class="container m-4">
+        {% if id %}
+            <span>If you wan't delete the event <strong> {{ id.event }} </strong></span><a href="{% url 'crud:deleteEvent' id.id %}">Click here</a><span>.</span>
+        {% endif%}
+    </div>
+{% endblock%}

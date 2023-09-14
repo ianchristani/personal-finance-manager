@@ -1,0 +1,14 @@
+{% extends 'general_template.html' %}
+
+{% block login %}
+    <div class="container m-4">
+        <div class="container">
+            <p>Login:</p>
+            <form action="{% url 'usersapp:login' %}" method="post">
+                {% csrf_token %}
+                {{ authform.as_p }}
+                <button class="btn btn-info" type="submit">Authenticate</button>
+            </form>
+        </div>        
+    </div>
+{% endblock %}

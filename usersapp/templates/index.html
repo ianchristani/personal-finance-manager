@@ -1,0 +1,11 @@
+{% extends 'general_template.html' %}
+
+{% block index %}
+    <div class="container m-4">
+        <h1>Welcome to Finance Manager</h1>
+    </div>
+    <div class="container m-4">
+        <p>If you are already registered, <a href="{% url 'usersapp:login' %}">login here</a></p>
+        <p>If not, register yourself <a href="{% url 'usersapp:signup' %}">here</a></p>
+    </div>
+{% endblock %}

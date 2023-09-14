@@ -1,0 +1,14 @@
+{% extends "general_users_template.html" %}
+
+{% block eventDelete %}
+    <h1>delete page</h1>    
+
+    <form method="post">
+        <container class="m-4">        
+            {% csrf_token %}
+            <h3>Do you confirm this event <strong>{{ eventtodelete.event }}</strong> will be deleted?</h3>
+            <button type="submit" class="btn btn-danger">Yes</button>
+        </container>
+    </form>
+    <a  href="{% url 'crud:eventList' %}"><button class="btn btn-success">No</button></a> 
+{% endblock%}
