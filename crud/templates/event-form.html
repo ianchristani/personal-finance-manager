@@ -13,11 +13,10 @@
             {% csrf_token %}
             <p>
                 {{ eventform.as_p }}
-                <span>
-                    {% if id and id.pic.url != None %}
-                        The current image: <span><img class="event_detail_pic" src="{{ id.pic.url }}"></span>                    
-                    {% endif%}
-                </span>
+                <!-- displaying the date for registered events -->
+                {% if id %}
+                    <p>The registered date (automatic): <span>{{ id.date }}</span></p>
+                {% endif%}
             </p>
             <button type="submit" class="btn btn-primary mt-4">Submit</button>
         </form>
